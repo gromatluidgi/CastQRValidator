@@ -1,0 +1,298 @@
+﻿<Window
+    x:Class="CastQRValidator.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CastQRValidator"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="CastQRValidator"
+    Width="1024"
+    Height="640"
+    MinWidth="1024"
+    MinHeight="640"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <Storyboard x:Key="OpenDrawer">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DrawerMenu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="72" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="320" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="CollapseDrawer">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DrawerMenu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="320" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="72" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="ToggleButtonMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenDrawer}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="ToggleButtonMenu">
+            <BeginStoryboard Storyboard="{StaticResource CollapseDrawer}" />
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="72" />
+            <ColumnDefinition Width="12*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid
+            x:Name="DrawerMenu"
+            Grid.Row="0"
+            Grid.Column="0"
+            Width="72"
+            Background="RosyBrown">
+            <StackPanel Orientation="Vertical">
+                <Grid Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <ToggleButton
+                        x:Name="ToggleButtonMenu"
+                        Grid.Column="0"
+                        Width="72"
+                        Height="72"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Cursor="Hand"
+                        Foreground="White">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <materialDesign:PackIcon
+                                            Width="34"
+                                            Height="34"
+                                            Kind="Menu" />
+                                    </Setter.Value>
+                                </Setter>
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Setter Property="Content">
+                                            <Setter.Value>
+                                                <materialDesign:PackIcon
+                                                    Width="34"
+                                                    Height="34"
+                                                    Kind="Backburger" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+
+                                    <Trigger Property="IsChecked" Value="False">
+                                        <Setter Property="Content">
+                                            <Setter.Value>
+                                                <materialDesign:PackIcon
+                                                    Width="34"
+                                                    Height="34"
+                                                    Margin="0,0,0,0"
+                                                    Kind="Menu" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+                </Grid>
+
+                <ListBox
+                    x:Name="ListViewMenu"
+                    BorderBrush="Transparent"
+                    HorizontalContentAlignment="Stretch"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBoxItem HorizontalAlignment="Stretch">
+                        <Button
+                            HorizontalContentAlignment="Stretch"
+                            Height="44"
+                            Command="{Binding Path=NavigateToCommand}"
+                            CommandParameter="Views/Pages/HomePage.xaml"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="34"
+                                    Height="34"
+                                    Margin="8,0,0,0"
+                                    Foreground="White"
+                                    Kind="MonitorDashboard" />
+                                <TextBlock
+                                    Margin="24,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="Dashboard" />
+                            </StackPanel>
+                        </Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                        <Button
+                            Height="44"
+                            Command="{Binding Path=NavigateToCommand}"
+                            HorizontalContentAlignment="Stretch"
+                            CommandParameter="Views/Pages/PlansPage.xaml"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <materialDesign:PackIcon
+                                    Width="34"
+                                    Height="34"
+                                    Margin="8,0,0,0"
+                                    Foreground="White"
+                                    Kind="Architecture" />
+                                <TextBlock
+                                    Margin="24,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="Plans" />
+                            </StackPanel>
+                        </Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                        <Button
+                            HorizontalContentAlignment="Stretch"
+                            Height="44"
+                            Command="{Binding Path=NavigateToCommand}"
+                            CommandParameter="Views/Pages/RulesPage.xaml"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <materialDesign:PackIcon
+                                    Width="34"
+                                    Height="34"
+                                    Margin="8,0,0,0"
+                                    Foreground="White"
+                                    Kind="Security" />
+                                <TextBlock
+                                    Margin="24,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="Rules" />
+                            </StackPanel>
+                        </Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                        <Button
+                            Height="44"
+                            HorizontalContentAlignment="Stretch"
+                            Command="{Binding Path=NavigateToCommand}"
+                            CommandParameter="Views/Pages/SamplesPage.xaml"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <materialDesign:PackIcon
+                                    Width="34"
+                                    Height="34"
+                                    Margin="8,0,0,0"
+                                    Foreground="White"
+                                    Kind="TestTube" />
+                                <TextBlock
+                                    Margin="24,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="Samples" />
+                            </StackPanel>
+                        </Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                        <Button
+                            HorizontalContentAlignment="Stretch"
+                            Height="44"
+                            Command="{Binding Path=NavigateToCommand}"
+                            CommandParameter="Views/Pages/EnginesPage.xaml"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <materialDesign:PackIcon
+                                    Width="34"
+                                    Height="34"
+                                    Margin="8,0,0,0"
+                                    Foreground="White"
+                                    Kind="Toolbox" />
+                                <TextBlock
+                                    Margin="24,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="Engines" />
+                            </StackPanel>
+                        </Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                        <Button
+                            HorizontalContentAlignment="Stretch"
+                            Height="44"
+                            Command="{Binding Path=NavigateToCommand}"
+                            CommandParameter="Views/Pages/SettingsPage.xaml"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <materialDesign:PackIcon
+                                    Width="34"
+                                    Height="34"
+                                    Margin="8,0,0,0"
+                                    Foreground="White"
+                                    Kind="Settings" />
+                                <TextBlock
+                                    Margin="24,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="Settings" />
+                            </StackPanel>
+                        </Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                        <Button
+                            Height="44"
+                            HorizontalContentAlignment="Stretch"
+                            Command="{Binding Path=NavigateToCommand}"
+                            CommandParameter="Views/Pages/HelpPage.xaml"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <materialDesign:PackIcon
+                                    Width="34"
+                                    Height="34"
+                                    Margin="8,0,0,0"
+                                    Foreground="White"
+                                    Kind="HelpBox" />
+                                <TextBlock
+                                    Margin="24,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="Help" />
+                            </StackPanel>
+                        </Button>
+                    </ListBoxItem>
+                </ListBox>
+            </StackPanel>
+        </Grid>
+
+        <DockPanel Grid.Column="1">
+            <Frame x:Name="PagerFrame" />
+        </DockPanel>
+    </Grid>
+</Window>

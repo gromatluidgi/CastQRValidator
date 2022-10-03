@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CastQRValidator", "CastQRValidator\CastQRValidator.csproj", "{A7749636-0630-4A16-91C1-629001383413}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CastQRValidator.Tests", "CastQRValidator.Tests\CastQRValidator.Tests.csproj", "{489A9F40-9330-459C-9820-57E82A81B111}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7749636-0630-4A16-91C1-629001383413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7749636-0630-4A16-91C1-629001383413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7749636-0630-4A16-91C1-629001383413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7749636-0630-4A16-91C1-629001383413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{489A9F40-9330-459C-9820-57E82A81B111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{489A9F40-9330-459C-9820-57E82A81B111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{489A9F40-9330-459C-9820-57E82A81B111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{489A9F40-9330-459C-9820-57E82A81B111}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22998F6E-6F85-4EF4-9C36-EE3895BEF3C6}
+	EndGlobalSection
+EndGlobal
