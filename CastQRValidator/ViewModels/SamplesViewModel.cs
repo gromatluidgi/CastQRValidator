@@ -1,20 +1,43 @@
 ﻿using CastQRValidator.Attributes;
 using CastQRValidator.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using CastQRValidator.Services.Abstractions;
+using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace CastQRValidator.ViewModels
 {
     [Transient]
-    public class SamplesViewModel
+    internal class SamplesViewModel : ObservableObject
     {
-        private readonly SampleService _sampleService;
-        public SamplesViewModel(SampleService sampleService) { 
+        private readonly ISampleService _sampleService;
+        private readonly ObservableCollection<SampleItemViewModel> _samples;
+        private bool _isLoading = false;
+
+        public SamplesViewModel(ISampleService sampleService) { 
         
             _sampleService = sampleService;
+            _samples = new ObservableCollection<SampleItemViewModel>();
+            Task.Run(Load);
+        }
+
+
+        public bool IsLoading { get { return _isLoading; } }
+
+        public ObservableCollection<SampleItemViewModel> Samples
+        {
+            get { return _samples; }
+        }
+
+        private async Task Load()
+        {
+            _isLoading = true;
+            var samples = await _sampleService.FindAll();
+            foreach (var sample in samples)
+            {
+                _samples.Add(new SampleItemViewModel(sample.Name, sample.Path, sample.RuleId));
+            }
+            _isLoading = false;
         }
     }
 }

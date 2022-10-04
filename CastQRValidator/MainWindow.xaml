@@ -10,6 +10,7 @@
     Width="1024"
     Height="640"
     MinWidth="1024"
+    ResizeMode="NoResize"
     MinHeight="640"
     mc:Ignorable="d">
 
@@ -124,13 +125,13 @@
 
                 <ListBox
                     x:Name="ListViewMenu"
-                    BorderBrush="Transparent"
                     HorizontalContentAlignment="Stretch"
+                    BorderBrush="Transparent"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBoxItem HorizontalAlignment="Stretch">
                         <Button
-                            HorizontalContentAlignment="Stretch"
                             Height="44"
+                            HorizontalContentAlignment="Stretch"
                             Command="{Binding Path=NavigateToCommand}"
                             CommandParameter="Views/Pages/HomePage.xaml"
                             Style="{StaticResource MaterialDesignToolButton}">
@@ -153,11 +154,11 @@
                     <ListBoxItem HorizontalContentAlignment="Stretch">
                         <Button
                             Height="44"
-                            Command="{Binding Path=NavigateToCommand}"
                             HorizontalContentAlignment="Stretch"
+                            Command="{Binding Path=NavigateToCommand}"
                             CommandParameter="Views/Pages/PlansPage.xaml"
                             Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                                 <materialDesign:PackIcon
                                     Width="34"
                                     Height="34"
@@ -175,12 +176,12 @@
 
                     <ListBoxItem HorizontalContentAlignment="Stretch">
                         <Button
-                            HorizontalContentAlignment="Stretch"
                             Height="44"
+                            HorizontalContentAlignment="Stretch"
                             Command="{Binding Path=NavigateToCommand}"
                             CommandParameter="Views/Pages/RulesPage.xaml"
                             Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                                 <materialDesign:PackIcon
                                     Width="34"
                                     Height="34"
@@ -203,7 +204,7 @@
                             Command="{Binding Path=NavigateToCommand}"
                             CommandParameter="Views/Pages/SamplesPage.xaml"
                             Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                                 <materialDesign:PackIcon
                                     Width="34"
                                     Height="34"
@@ -221,12 +222,12 @@
 
                     <ListBoxItem HorizontalContentAlignment="Stretch">
                         <Button
-                            HorizontalContentAlignment="Stretch"
                             Height="44"
+                            HorizontalContentAlignment="Stretch"
                             Command="{Binding Path=NavigateToCommand}"
                             CommandParameter="Views/Pages/EnginesPage.xaml"
                             Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                                 <materialDesign:PackIcon
                                     Width="34"
                                     Height="34"
@@ -244,12 +245,12 @@
 
                     <ListBoxItem HorizontalContentAlignment="Stretch">
                         <Button
-                            HorizontalContentAlignment="Stretch"
                             Height="44"
+                            HorizontalContentAlignment="Stretch"
                             Command="{Binding Path=NavigateToCommand}"
                             CommandParameter="Views/Pages/SettingsPage.xaml"
                             Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                                 <materialDesign:PackIcon
                                     Width="34"
                                     Height="34"
@@ -272,7 +273,7 @@
                             Command="{Binding Path=NavigateToCommand}"
                             CommandParameter="Views/Pages/HelpPage.xaml"
                             Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                                 <materialDesign:PackIcon
                                     Width="34"
                                     Height="34"

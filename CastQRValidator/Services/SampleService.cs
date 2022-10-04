@@ -1,23 +1,26 @@
 ﻿using CastQRValidator.Attributes;
-using CastQRValidator.Stores;
-using System;
+using CastQRValidator.Models;
+using CastQRValidator.Services.Abstractions;
+using CastQRValidator.Stores.Abstractions;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CastQRValidator.Services
 {
     [Transient]
-    public class SampleService
+    public class SampleService : ISampleService
     {
 
-        private readonly SamplesStore _sampleStore;
+        private readonly ISampleStore _sampleStore;
         
-        public SampleService(SamplesStore samplesStore)
+        public SampleService(ISampleStore samplesStore)
         {
             _sampleStore = samplesStore;
         }
 
+        public async Task<IEnumerable<Sample>> FindAll()
+        {
+            return await _sampleStore.FindAll();
+        }
     }
 }

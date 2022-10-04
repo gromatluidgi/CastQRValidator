@@ -1,11 +1,16 @@
 ﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
 
 namespace CastQRValidator.Models
 {
     public class Plan
     {
-        [JsonPropertyName("Name")]
+
+        public Plan(string name, Collection<string> sampleNames)
+        {
+            Name = name;
+            SampleNames = sampleNames;
+        }
+
         public string Name { get; }
 
         public Collection<string> SampleNames { get; }

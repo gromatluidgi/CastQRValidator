@@ -1,14 +1,11 @@
 ﻿using CastQRValidator.Attributes;
 using CastQRValidator.Configurations;
+using CastQRValidator.Stores;
+using CastQRValidator.Stores.Abstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CastQRValidator.DependencyInjection
 {
@@ -33,14 +30,23 @@ namespace CastQRValidator.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddStores(this IServiceCollection services)
+        public static IServiceCollection AddJsonStores(this IServiceCollection services)
+        {
+            services.AddSingleton<IPlanStore, PlanStore>();
+            services.AddSingleton<IRulesStore, RuleStore>();
+            services.AddSingleton<ISampleStore, SampleStore>();
+            services.AddSingleton<IEngineStore, EngineStore>();
+            return services;
+        }
+
+        public static IServiceCollection AddScannedStores(this IServiceCollection services)
         {
             // Perform assembly scanning with dynamic stores registration
             services.Scan(s =>
             {
                 s.FromCallingAssembly()
                 .AddClasses(c => c.Where(p => p.Name.EndsWith("Store") && p.IsDefined(typeof(SingletonAttribute))))
-                .AsSelf()
+                .AsSelfWithInterfaces()
                 .WithSingletonLifetime();
             });
 
@@ -54,7 +60,7 @@ namespace CastQRValidator.DependencyInjection
             {
                 s.FromCallingAssembly()
                 .AddClasses(c => c.Where(p => p.Name.EndsWith("Service") && p.IsDefined(typeof(TransientAttribute))))
-                .AsSelf()
+                .AsSelfWithInterfaces()
                 .WithTransientLifetime();
             });
 

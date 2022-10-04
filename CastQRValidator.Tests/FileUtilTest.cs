@@ -1,7 +1,6 @@
 using CastQRValidator.Models;
 using CastQRValidator.Utils;
 using System.Collections.ObjectModel;
-using System.Numerics;
 
 namespace CastQRValidator.Tests
 {

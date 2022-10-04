@@ -31,9 +31,9 @@ namespace CastQRValidator
             var services = new ServiceCollection();
 
             services.SetupConfiguration();
-            services.AddViewModels();
-            services.AddStores();
+            services.AddJsonStores();
             services.AddApplicationServices();
+            services.AddViewModels();
 
             ServiceProvider = services.BuildServiceProvider();
         }

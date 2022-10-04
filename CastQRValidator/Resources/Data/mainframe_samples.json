@@ -1,8 +1,8 @@
 [
 	{
-		"Name": "Test",
-		"Path": "Test",
-		"RuleId": 9990,
+		"Name": "binary_depending:pgmok1.cob",
+		"Path": "Resources/Mainframe/binary_depending/pgmok1.cob",
+		"RuleId": 2001002,
 		"Violations": [
 			{
 				"BeginLine": 10,

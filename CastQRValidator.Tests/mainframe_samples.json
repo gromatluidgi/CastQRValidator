@@ -1,7 +1,7 @@
 [
   {
-    "Name": "Test",
-    "Path": "Test",
+    "Name": "binary_depending",
+    "Path": "/Resources/Mainframe/binary_depending/pgmok1.cob",
     "RuleId": 9990,
     "Violations": [
       {
@@ -9,6 +9,32 @@
         "EndLine": 20,
         "BeginColumn": 30,
         "EndColumn": 40
+      }
+    ]
+  },
+  {
+    "Name": "paragraph_redefined",
+    "Path": "/Resources/Mainframe/paragraph_redefined/pgmok1.cob",
+    "RuleId": 9990,
+    "Violations": [
+      {
+        "BeginLine": 0,
+        "EndLine": 0,
+        "BeginColumn": 0,
+        "EndColumn": 0
+      }
+    ]
+  },
+  {
+    "Name": "empty_paragraph_end",
+    "Path": "/Resources/Mainframe/empty_paragraph_end/pgmok1.cob",
+    "RuleId": 9990,
+    "Violations": [
+      {
+        "BeginLine": 0,
+        "EndLine": 0,
+        "BeginColumn": 0,
+        "EndColumn": 0
       }
     ]
   }

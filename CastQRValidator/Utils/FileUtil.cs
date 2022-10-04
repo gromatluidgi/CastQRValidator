@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace CastQRValidator.Utils
 {
@@ -26,6 +22,17 @@ namespace CastQRValidator.Utils
                 PropertyNameCaseInsensitive = true,
                 DefaultIgnoreCondition = JsonIgnoreCondition.Never,
             });
+        }
+
+        public static List<string> SearchFilesFromBaseDir(string baseDirectory, string regexPattern)
+        {
+            var dir = new DirectoryInfo(baseDirectory);
+            if (!dir.Exists) throw new DirectoryNotFoundException();
+
+            var regex = new Regex(regexPattern);
+
+            List<string> files = dir.EnumerateFiles().Select(f => f.Name).ToList();
+            return files.Where(f => regex.IsMatch(f)).ToList();
         }
     }
 }

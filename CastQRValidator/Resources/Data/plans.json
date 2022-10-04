@@ -1,0 +1,10 @@
+[
+  {
+    "Name": "ExtensionSDK",
+    "SampleNames": [
+      "binary_depending",
+      "paragraph_redefined",
+      "empty_paragraph_end"
+    ]
+  }
+]

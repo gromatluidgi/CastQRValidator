@@ -9,18 +9,30 @@
 
   <ItemGroup>
     <None Remove="Resources\appsettings.json" />
+    <None Remove="Resources\Data\engines.json" />
     <None Remove="Resources\Data\mainframe_rules.json" />
     <None Remove="Resources\Data\mainframe_samples.json" />
+    <None Remove="Resources\Data\plans.json" />
+    <None Remove="Resources\WorkingDir\.gitkeep" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Data\engines.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Data\mainframe_rules.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Data\mainframe_samples.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Data\plans.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\WorkingDir\.gitkeep">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -37,6 +49,7 @@
 
   <ItemGroup>
     <Folder Include="Behaviors\" />
+    <Folder Include="Events\" />
     <Folder Include="Serialization\" />
     <Folder Include="Options\" />
   </ItemGroup>

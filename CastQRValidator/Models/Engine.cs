@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CastQRValidator.Models
+﻿namespace CastQRValidator.Models
 {
     public class Engine
     {
+        public Engine(string name, string path)
+        {
+            Name = name;
+            Path = path;
+        }
+
         public string Name { get; set; }
 
         public string Path { get; set; }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CastQRValidator.Models
+﻿namespace CastQRValidator.Models
 {
-    internal class Rule
+    public class Rule
     {
         public Rule(int id, string originalName)
         {

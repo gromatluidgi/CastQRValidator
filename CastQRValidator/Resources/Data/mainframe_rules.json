@@ -1,6 +1,14 @@
 [
   {
-    "Id": 0,
-    "OrinalName": ""
+    "Id": 2001000,
+    "OriginalName": "Avoid redefining paragraph"
+  },
+  {
+    "Id": 2001002,
+    "OriginalName": "Avoid occurs dependending on non binary data"
+  },
+  {
+    "Id": 2001004,
+    "OriginalName": "Section should be terminated by an empty paragraph"
   }
 ]

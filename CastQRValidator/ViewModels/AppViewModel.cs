@@ -2,10 +2,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace CastQRValidator.ViewModels
@@ -13,6 +9,7 @@ namespace CastQRValidator.ViewModels
     [Singleton]
     internal class AppViewModel : ObservableObject
     {
+
         private Frame? _pagerFrame;
 
         public AppViewModel()
@@ -25,6 +22,10 @@ namespace CastQRValidator.ViewModels
             get => _pagerFrame;
             set => SetProperty(ref _pagerFrame, value);
         }
+
+        public int RuleCount { get; set; }
+        public int PlanCount { get; set; }
+        public int EngineCount { get; set; }
 
         public RelayCommand<string?> NavigateToCommand { get; }
 
