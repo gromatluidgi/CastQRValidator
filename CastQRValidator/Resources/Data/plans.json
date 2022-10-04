@@ -1,6 +1,7 @@
 [
   {
     "Name": "ExtensionSDK",
+    "Engine": "CAST",
     "SampleNames": [
       "binary_depending",
       "paragraph_redefined",

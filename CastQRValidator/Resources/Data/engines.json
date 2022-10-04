@@ -1,3 +1,7 @@
 [
-
+  {
+    "Name": "CAST",
+    "Path": "",
+    "Arguments": "-s <SOURCE> -o <OUT> -a <PGMNAME>"
+  }
 ]
