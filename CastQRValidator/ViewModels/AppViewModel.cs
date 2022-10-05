@@ -23,6 +23,7 @@ namespace CastQRValidator.ViewModels
             set => SetProperty(ref _pagerFrame, value);
         }
 
+        public bool IsLoading { get; set; } = false;
         public int RuleCount { get; set; }
         public int PlanCount { get; set; }
         public int EngineCount { get; set; }

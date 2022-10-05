@@ -36,6 +36,7 @@ namespace CastQRValidator.DependencyInjection
             services.AddSingleton<IRulesStore, RuleStore>();
             services.AddSingleton<ISampleStore, SampleStore>();
             services.AddSingleton<IEngineStore, EngineStore>();
+            services.AddSingleton<IStoreContext, JsonStoreContext>();
             return services;
         }
 

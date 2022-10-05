@@ -10,8 +10,8 @@
     Width="1024"
     Height="640"
     MinWidth="1024"
-    ResizeMode="NoResize"
     MinHeight="640"
+    ResizeMode="NoResize"
     mc:Ignorable="d">
 
     <Window.Resources>
@@ -295,5 +295,15 @@
         <DockPanel Grid.Column="1">
             <Frame x:Name="PagerFrame" />
         </DockPanel>
+
+        <AdornerDecorator Grid.ColumnSpan="2" Visibility="{Binding Path=IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border Background="#40000000">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Loading..." />
+                </StackPanel>
+            </Border>
+        </AdornerDecorator>
     </Grid>
 </Window>
