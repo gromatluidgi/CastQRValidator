@@ -8,6 +8,8 @@ namespace CastQRValidator.Stores.Abstractions
 {
     internal interface IStoreContext
     {
+        Task Initialize();
+
         ISampleStore SampleStore { get; }
 
         IRulesStore RulesStore { get; }

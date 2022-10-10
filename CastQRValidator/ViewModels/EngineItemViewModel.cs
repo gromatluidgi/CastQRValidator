@@ -6,5 +6,6 @@ namespace CastQRValidator.ViewModels
     [Transient]
     internal class EngineItemViewModel : ObservableObject
     {
+
     }
 }

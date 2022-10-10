@@ -1,7 +1,9 @@
 ﻿using CastQRValidator.Attributes;
+using CastQRValidator.Stores.Abstractions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace CastQRValidator.ViewModels
@@ -11,10 +13,13 @@ namespace CastQRValidator.ViewModels
     {
 
         private Frame? _pagerFrame;
+        private readonly IStoreContext _storeContext;
 
-        public AppViewModel()
+        public AppViewModel(IStoreContext storeContext)
         {
+           _storeContext = storeContext;
             NavigateToCommand = new RelayCommand<string?>(NavigateToHandler);
+            Task.Run(InitializeStores);
         }
 
         public Frame? PagerFrame
@@ -34,6 +39,13 @@ namespace CastQRValidator.ViewModels
         {
             if (target == null) return;
             PagerFrame?.Navigate(new Uri(target, UriKind.Relative));
+        }
+
+        private async Task InitializeStores()
+        {
+            IsLoading = true;
+            await _storeContext.Initialize();
+            IsLoading = false;
         }
 
 

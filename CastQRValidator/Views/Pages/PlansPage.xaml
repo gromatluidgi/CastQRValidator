@@ -20,9 +20,27 @@
         </StackPanel>
         <DataGrid
             Margin="0,16,0,0"
-            AutoGenerateColumns="True"
+            AutoGenerateColumns="False"
             CanUserAddRows="False"
             HeadersVisibility="All"
-            ItemsSource="{Binding Plans}" />
+            IsReadOnly="True"
+            ItemsSource="{Binding Plans}">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+
+
+                <DataGridTextColumn Header="Samples" Binding="{Binding Samples}" />
+                
+                <DataGridTemplateColumn Header="Action">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Run" Command="{Binding RunPlanCommand}" IsEnabled="{Binding Path=RunResult, Converter={StaticResource IsNullConverter}, Mode=OneWay}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
     </DockPanel>
 </Page>

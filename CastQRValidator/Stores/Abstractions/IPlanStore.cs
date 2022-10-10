@@ -6,6 +6,8 @@ namespace CastQRValidator.Stores.Abstractions
 {
     public interface IPlanStore
     {
+        Task Load(string source);
+
         public Task<IEnumerable<Plan>> FindAll();
 
     }

@@ -17,12 +17,11 @@ namespace CastQRValidator.Stores
         public SampleStore()
         {
             _samples = new HashSet<Sample>();
-            Task.Run(Load);
         }
 
-        internal Task Load()
+        public Task Load(string source)
         {
-            var samples = FileUtil.ReadJsonFromFile<ISet<Sample>>("Resources/Data/mainframe_samples.json");
+            var samples = FileUtil.ReadJsonFromFile<ISet<Sample>>(source);
             if (samples == null) throw new SerializationException();
             foreach(var sample in samples)
             {

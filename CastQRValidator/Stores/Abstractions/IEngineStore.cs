@@ -6,7 +6,11 @@ namespace CastQRValidator.Stores.Abstractions
 {
     public interface IEngineStore
     {
+        Task Load(string source);
+
         public Task<IEnumerable<Engine>> FindAll();
+
+        public Task<Engine?> FindByName(string name);
 
     }
 }

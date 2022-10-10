@@ -17,12 +17,11 @@ namespace CastQRValidator.Stores
         public RuleStore()
         {
             _rules = new HashSet<Rule>();
-            Task.Run(Load);
         }
 
-        internal Task Load()
+        public Task Load(string source)
         {
-            var rules = FileUtil.ReadJsonFromFile<ISet<Rule>>("Resources/Data/mainframe_rules.json");
+            var rules = FileUtil.ReadJsonFromFile<ISet<Rule>>(source);
             if (rules == null) throw new ArgumentNullException();
             foreach (var rule in rules)
             {

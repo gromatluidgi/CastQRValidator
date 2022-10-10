@@ -6,6 +6,8 @@ namespace CastQRValidator.Stores.Abstractions
 {
     public interface IRulesStore
     {
+        Task Load(string source);
+
         public Task<IEnumerable<Rule>> FindAll();
 
     }

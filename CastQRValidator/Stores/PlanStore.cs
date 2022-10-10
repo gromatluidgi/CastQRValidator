@@ -17,12 +17,11 @@ namespace CastQRValidator.Stores
         public PlanStore()
         {
             _plans = new HashSet<Plan>();
-            Task.Run(Load);
         }
 
-        internal Task Load()
+        public Task Load(string source)
         {
-            var plans = FileUtil.ReadJsonFromFile<ISet<Plan>>("Resources/Data/plans.json");
+            var plans = FileUtil.ReadJsonFromFile<ISet<Plan>>(source);
             if (plans == null) throw new ArgumentNullException();
             foreach (var plan in plans)
             {

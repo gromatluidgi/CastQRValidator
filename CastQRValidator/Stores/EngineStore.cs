@@ -15,12 +15,13 @@ namespace CastQRValidator.Stores
         public EngineStore()
         {
             _engines = new HashSet<Engine>();
-            Task.Run(Load);
         }
 
-        internal Task Load()
+        public Task Load(string source)
         {
-            var engines = FileUtil.ReadJsonFromFile<ISet<Engine>>("Resources/Data/engines.json");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+
+            var engines = FileUtil.ReadJsonFromFile<ISet<Engine>>(source);
             if (engines == null) throw new ArgumentNullException();
             foreach (var engine in engines)
             {
@@ -33,6 +34,11 @@ namespace CastQRValidator.Stores
         {
             return await Task.FromResult(_engines.ToList());
 
+        }
+
+        public async Task<Engine?> FindByName(string name)
+        {
+            return await Task.FromResult(_engines.FirstOrDefault(e => e.Name.Equals(name)));
         }
     }
 }

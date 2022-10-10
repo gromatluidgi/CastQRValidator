@@ -1,6 +1,8 @@
 ﻿using CastQRValidator.Attributes;
 using CastQRValidator.Stores.Abstractions;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace CastQRValidator.Stores
 {
@@ -27,5 +29,16 @@ namespace CastQRValidator.Stores
         public IPlanStore PlanStore => _planStore;
 
         public IEngineStore EngineStore => _engineStore;
+
+        public async Task Initialize()
+        {
+            List<Task> tasks = new List<Task>();
+            tasks.Add(_sampleStore.Load("Resources/Data/mainframe_samples.json"));
+            tasks.Add(_rulesStore.Load("Resources/Data/mainframe_rules.json"));
+            tasks.Add(_planStore.Load("Resources/Data/plans.json"));
+            tasks.Add(_engineStore.Load("Resources/Data/engines.json"));
+
+            await Task.Run(() => Task.WaitAll(tasks.ToArray()));
+        }
     }
 }

@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:CastQRValidator"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -129,126 +130,115 @@
                     BorderBrush="Transparent"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBoxItem HorizontalAlignment="Stretch">
-                        <Button
-                            Height="44"
-                            HorizontalContentAlignment="Stretch"
-                            Command="{Binding Path=NavigateToCommand}"
-                            CommandParameter="Views/Pages/HomePage.xaml"
-                            Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon
-                                    Width="34"
-                                    Height="34"
-                                    Margin="8,0,0,0"
-                                    Foreground="White"
-                                    Kind="MonitorDashboard" />
-                                <TextBlock
-                                    Margin="24,0,0,0"
-                                    VerticalAlignment="Center"
-                                    Foreground="White"
-                                    Text="Dashboard" />
-                            </StackPanel>
-                        </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="34"
+                                Height="34"
+                                Margin="8,0,0,0"
+                                Foreground="White"
+                                Kind="MonitorDashboard" />
+                            <TextBlock
+                                Margin="24,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="Dashboard" />
+                        </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding Path=NavigateToCommand}" CommandParameter="Views/Pages/HomePage.xaml" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="34"
+                                Height="34"
+                                Margin="8,0,0,0"
+                                Foreground="White"
+                                Kind="Architecture" />
+                            <TextBlock
+                                Margin="24,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="Plans" />
+                        </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding Path=NavigateToCommand}" CommandParameter="Views/Pages/PlansPage.xaml" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="34"
+                                Height="34"
+                                Margin="8,0,0,0"
+                                Foreground="White"
+                                Kind="Security" />
+                            <TextBlock
+                                Margin="24,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="Rules" />
+                        </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding Path=NavigateToCommand}" CommandParameter="Views/Pages/RulesPage.xaml" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="34"
+                                Height="34"
+                                Margin="8,0,0,0"
+                                Foreground="White"
+                                Kind="TestTube" />
+                            <TextBlock
+                                Margin="24,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="Samples" />
+                        </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding Path=NavigateToCommand}" CommandParameter="Views/Pages/SamplesPage.xaml" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBoxItem>
+
+                    <ListBoxItem HorizontalContentAlignment="Stretch">
+
+                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="34"
+                                Height="34"
+                                Margin="8,0,0,0"
+                                Foreground="White"
+                                Kind="Toolbox" />
+                            <TextBlock
+                                Margin="24,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="Engines" />
+                        </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding Path=NavigateToCommand}" CommandParameter="Views/Pages/EnginesPage.xaml" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ListBoxItem>
 
                     <ListBoxItem HorizontalContentAlignment="Stretch">
                         <Button
                             Height="44"
                             HorizontalContentAlignment="Stretch"
-                            Command="{Binding Path=NavigateToCommand}"
-                            CommandParameter="Views/Pages/PlansPage.xaml"
-                            Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                <materialDesign:PackIcon
-                                    Width="34"
-                                    Height="34"
-                                    Margin="8,0,0,0"
-                                    Foreground="White"
-                                    Kind="Architecture" />
-                                <TextBlock
-                                    Margin="24,0,0,0"
-                                    VerticalAlignment="Center"
-                                    Foreground="White"
-                                    Text="Plans" />
-                            </StackPanel>
-                        </Button>
-                    </ListBoxItem>
-
-                    <ListBoxItem HorizontalContentAlignment="Stretch">
-                        <Button
-                            Height="44"
-                            HorizontalContentAlignment="Stretch"
-                            Command="{Binding Path=NavigateToCommand}"
-                            CommandParameter="Views/Pages/RulesPage.xaml"
-                            Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                <materialDesign:PackIcon
-                                    Width="34"
-                                    Height="34"
-                                    Margin="8,0,0,0"
-                                    Foreground="White"
-                                    Kind="Security" />
-                                <TextBlock
-                                    Margin="24,0,0,0"
-                                    VerticalAlignment="Center"
-                                    Foreground="White"
-                                    Text="Rules" />
-                            </StackPanel>
-                        </Button>
-                    </ListBoxItem>
-
-                    <ListBoxItem HorizontalContentAlignment="Stretch">
-                        <Button
-                            Height="44"
-                            HorizontalContentAlignment="Stretch"
-                            Command="{Binding Path=NavigateToCommand}"
-                            CommandParameter="Views/Pages/SamplesPage.xaml"
-                            Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                <materialDesign:PackIcon
-                                    Width="34"
-                                    Height="34"
-                                    Margin="8,0,0,0"
-                                    Foreground="White"
-                                    Kind="TestTube" />
-                                <TextBlock
-                                    Margin="24,0,0,0"
-                                    VerticalAlignment="Center"
-                                    Foreground="White"
-                                    Text="Samples" />
-                            </StackPanel>
-                        </Button>
-                    </ListBoxItem>
-
-                    <ListBoxItem HorizontalContentAlignment="Stretch">
-                        <Button
-                            Height="44"
-                            HorizontalContentAlignment="Stretch"
-                            Command="{Binding Path=NavigateToCommand}"
-                            CommandParameter="Views/Pages/EnginesPage.xaml"
-                            Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                <materialDesign:PackIcon
-                                    Width="34"
-                                    Height="34"
-                                    Margin="8,0,0,0"
-                                    Foreground="White"
-                                    Kind="Toolbox" />
-                                <TextBlock
-                                    Margin="24,0,0,0"
-                                    VerticalAlignment="Center"
-                                    Foreground="White"
-                                    Text="Engines" />
-                            </StackPanel>
-                        </Button>
-                    </ListBoxItem>
-
-                    <ListBoxItem HorizontalContentAlignment="Stretch">
-                        <Button
-                            Height="44"
-                            HorizontalContentAlignment="Stretch"
-                            Command="{Binding Path=NavigateToCommand}"
-                            CommandParameter="Views/Pages/SettingsPage.xaml"
                             Style="{StaticResource MaterialDesignToolButton}">
                             <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                                 <materialDesign:PackIcon
@@ -264,29 +254,32 @@
                                     Text="Settings" />
                             </StackPanel>
                         </Button>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding Path=NavigateToCommand}" CommandParameter="Views/Pages/SettingsPage.xaml" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ListBoxItem>
 
                     <ListBoxItem HorizontalContentAlignment="Stretch">
-                        <Button
-                            Height="44"
-                            HorizontalContentAlignment="Stretch"
-                            Command="{Binding Path=NavigateToCommand}"
-                            CommandParameter="Views/Pages/HelpPage.xaml"
-                            Style="{StaticResource MaterialDesignToolButton}">
-                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                <materialDesign:PackIcon
-                                    Width="34"
-                                    Height="34"
-                                    Margin="8,0,0,0"
-                                    Foreground="White"
-                                    Kind="HelpBox" />
-                                <TextBlock
-                                    Margin="24,0,0,0"
-                                    VerticalAlignment="Center"
-                                    Foreground="White"
-                                    Text="Help" />
-                            </StackPanel>
-                        </Button>
+                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="34"
+                                Height="34"
+                                Margin="8,0,0,0"
+                                Foreground="White"
+                                Kind="HelpBox" />
+                            <TextBlock
+                                Margin="24,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="Help" />
+                        </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding Path=NavigateToCommand}" CommandParameter="Views/Pages/HelpPage.xaml" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ListBoxItem>
                 </ListBox>
             </StackPanel>
@@ -298,8 +291,15 @@
 
         <AdornerDecorator Grid.ColumnSpan="2" Visibility="{Binding Path=IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Border Background="#40000000">
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                    <ProgressBar
+                        Width="44"
+                        Height="44"
+                        IsIndeterminate="True"
+                        Style="{StaticResource MaterialDesignCircularProgressBar}"
+                        Value="35" />
                     <TextBlock
+                        Margin="0,16,0,0"
                         HorizontalAlignment="Center"
                         Text="Loading..." />
                 </StackPanel>
