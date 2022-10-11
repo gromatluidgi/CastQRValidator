@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using CastQRValidator.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System.Windows.Controls;
 
 namespace CastQRValidator.Views.Pages
 {
@@ -10,6 +12,7 @@ namespace CastQRValidator.Views.Pages
         public HomePage()
         {
             InitializeComponent();
+            DataContext = Bootstraper.ServiceProvider!.GetRequiredService<AppViewModel>();
         }
     }
 }

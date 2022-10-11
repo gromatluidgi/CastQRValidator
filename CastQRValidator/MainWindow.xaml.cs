@@ -1,4 +1,6 @@
-﻿using CastQRValidator.Views.Pages;
+﻿using CastQRValidator.ViewModels;
+using CastQRValidator.Views.Pages;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
 namespace CastQRValidator

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -12,16 +13,21 @@ namespace CastQRValidator.Utils
         public static T? ReadJsonFromFile<T>(string filepath)
         {
             string json = string.Empty;
-
-            using (StreamReader read = new StreamReader(filepath))
+            try
             {
-                json = read.ReadToEnd();
+                using (StreamReader read = new StreamReader(filepath))
+                {
+                    json = read.ReadToEnd();
+                }
+                return JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    DefaultIgnoreCondition = JsonIgnoreCondition.Never,
+                });
+            } catch (Exception)
+            {
+                return default;
             }
-            return JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.Never,
-            });
         }
 
         public static List<string> SearchFilesFromBaseDir(string baseDirectory, string regexPattern)

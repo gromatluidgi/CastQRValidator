@@ -12,13 +12,17 @@ namespace CastQRValidator.ViewModels
     internal class AppViewModel : ObservableObject
     {
         private bool _isLoading = false;
+        private int _ruleCount = 0;
+        private int _planCount = 0;
+        private int _engineCount = 0;
+        private int _sampleCount = 0;
 
         private Frame? _pagerFrame;
         private readonly IStoreContext _storeContext;
 
         public AppViewModel(IStoreContext storeContext)
         {
-           _storeContext = storeContext;
+            _storeContext = storeContext;
             NavigateToCommand = new RelayCommand<string?>(NavigateToHandler);
             Task.Run(InitializeStores);
         }
@@ -29,15 +33,53 @@ namespace CastQRValidator.ViewModels
             set => SetProperty(ref _pagerFrame, value);
         }
 
-        public bool IsLoading { get { return _isLoading; } set
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
             {
                 _isLoading = value;
                 OnPropertyChanged();
             }
         }
-        public int RuleCount { get; set; }
-        public int PlanCount { get; set; }
-        public int EngineCount { get; set; }
+
+        public int RuleCount
+        {
+            get { return _ruleCount; }
+            set
+            {
+                _ruleCount = value;
+                OnPropertyChanged();
+            }
+        }
+        public int PlanCount
+        {
+            get { return _planCount; }
+            set
+            {
+                _planCount = value;
+                OnPropertyChanged();
+            }
+        }
+        public int EngineCount
+        {
+            get { return _engineCount; }
+            set
+            {
+                _engineCount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int SampleCount
+        {
+            get { return _sampleCount; }
+            set
+            {
+                _sampleCount = value;
+                OnPropertyChanged();
+            }
+        }
 
         public RelayCommand<string?> NavigateToCommand { get; }
 
@@ -51,9 +93,11 @@ namespace CastQRValidator.ViewModels
         {
             IsLoading = true;
             await _storeContext.Initialize();
+            EngineCount = await _storeContext.EngineStore.Count();
+            RuleCount = await _storeContext.RulesStore.Count();
+            PlanCount = await _storeContext.PlanStore.Count();
+            SampleCount = await _storeContext.SampleStore.Count();
             IsLoading = false;
         }
-
-
     }
 }

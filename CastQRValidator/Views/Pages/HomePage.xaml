@@ -50,8 +50,10 @@
                         Grid.Column="1"
                         Margin="16,0,16,0"
                         VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                        Text="0 RULES" />
+                        Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+                        <Run Text="{Binding Path=RuleCount}" />
+                        <Run Text="RULES" />
+                    </TextBlock>
                 </Grid>
             </materialDesign:Card>
 
@@ -76,8 +78,10 @@
                         Grid.Column="1"
                         Margin="16,0,16,0"
                         VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                        Text="0 SAMPLES" />
+                        Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+                        <Run Text="{Binding Path=SampleCount}" />
+                        <Run Text="SAMPLES" />
+                    </TextBlock>
                 </Grid>
             </materialDesign:Card>
 
@@ -102,8 +106,10 @@
                         Grid.Column="1"
                         Margin="16,0,16,0"
                         VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                        Text="0 PLANS" />
+                        Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+                        <Run Text="{Binding Path=PlanCount}" />
+                        <Run Text="PLANS" />
+                    </TextBlock>
                 </Grid>
             </materialDesign:Card>
         </Grid>

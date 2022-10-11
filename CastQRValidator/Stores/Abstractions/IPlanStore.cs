@@ -10,5 +10,7 @@ namespace CastQRValidator.Stores.Abstractions
 
         public Task<IEnumerable<Plan>> FindAll();
 
+        public Task<int> Count();
+
     }
 }

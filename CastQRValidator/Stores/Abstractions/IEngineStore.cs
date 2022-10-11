@@ -12,5 +12,6 @@ namespace CastQRValidator.Stores.Abstractions
 
         public Task<Engine?> FindByName(string name);
 
+        public Task<int> Count();
     }
 }

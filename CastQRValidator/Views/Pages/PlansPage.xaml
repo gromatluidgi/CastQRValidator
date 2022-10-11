@@ -27,9 +27,7 @@
             Background="{StaticResource BackgroundLayer2}"
             ItemsSource="{Binding Plans}">
             <DataGrid.Columns>
-
                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
-
 
                 <DataGridTextColumn Binding="{Binding Samples}" Header="Samples" />
 

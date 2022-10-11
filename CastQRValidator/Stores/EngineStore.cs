@@ -22,7 +22,7 @@ namespace CastQRValidator.Stores
             if (source == null) throw new ArgumentNullException(nameof(source));
 
             var engines = FileUtil.ReadJsonFromFile<ISet<Engine>>(source);
-            if (engines == null) throw new ArgumentNullException();
+            if (engines == null) throw new InvalidOperationException();
             foreach (var engine in engines)
             {
                 _engines.Add(engine);
@@ -39,6 +39,11 @@ namespace CastQRValidator.Stores
         public async Task<Engine?> FindByName(string name)
         {
             return await Task.FromResult(_engines.FirstOrDefault(e => e.Name.Equals(name)));
+        }
+
+        public async Task<int> Count()
+        {
+            return await Task.FromResult(_engines.Count);
         }
     }
 }

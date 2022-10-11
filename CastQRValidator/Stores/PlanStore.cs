@@ -22,7 +22,7 @@ namespace CastQRValidator.Stores
         public Task Load(string source)
         {
             var plans = FileUtil.ReadJsonFromFile<ISet<Plan>>(source);
-            if (plans == null) throw new ArgumentNullException();
+            if (plans == null) throw new InvalidOperationException();
             foreach (var plan in plans)
             {
                 _plans.Add(plan);
@@ -33,6 +33,11 @@ namespace CastQRValidator.Stores
         public async Task<IEnumerable<Plan>> FindAll()
         {
             return await Task.FromResult(_plans.ToList());
+        }
+
+        public async Task<int> Count()
+        {
+            return await Task.FromResult(_plans.Count);
         }
     }
 }

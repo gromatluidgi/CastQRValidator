@@ -39,5 +39,10 @@ namespace CastQRValidator.Stores
         {
             return await Task.FromResult(_samples.Where(s => names.Contains(s.Name)));
         }
+
+        public async Task<int> Count()
+        {
+            return await Task.FromResult(_samples.Count);
+        }
     }
 }

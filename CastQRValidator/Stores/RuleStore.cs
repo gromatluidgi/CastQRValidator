@@ -22,7 +22,7 @@ namespace CastQRValidator.Stores
         public Task Load(string source)
         {
             var rules = FileUtil.ReadJsonFromFile<ISet<Rule>>(source);
-            if (rules == null) throw new ArgumentNullException();
+            if (rules == null) throw new InvalidOperationException("No rules found for {source}");
             foreach (var rule in rules)
             {
                 _rules.Add(rule);
@@ -33,6 +33,11 @@ namespace CastQRValidator.Stores
         public async Task<IEnumerable<Rule>> FindAll()
         {
             return await Task.FromResult(_rules.ToList());
+        }
+
+        public async Task<int> Count()
+        {
+            return await Task.FromResult(_rules.Count);
         }
     }
 }

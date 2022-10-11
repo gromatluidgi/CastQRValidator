@@ -49,7 +49,7 @@ namespace CastQRValidator.ViewModels
                     try
                     {
                         var result = await ExecuteShellCommand(_engine.Path, ParseArgs(_engine.Arguments));
-                        App.Current.Dispatcher.Invoke((Action)delegate //<--- HERE
+                        App.Current.Dispatcher.Invoke((Action)delegate
                         {
                             ProcessResults.Add(Tuple.Create(new SampleItemViewModel(sample.Name, sample.Path, sample.RuleId), result.Output));
                         });

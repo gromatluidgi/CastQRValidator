@@ -12,5 +12,7 @@ namespace CastQRValidator.Stores.Abstractions
 
         public Task<IEnumerable<Sample>> FindByNames(string[] names);
 
+        public Task<int> Count();
+
     }
 }
