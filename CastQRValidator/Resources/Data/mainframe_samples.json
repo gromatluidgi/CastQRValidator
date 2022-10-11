@@ -11,5 +11,31 @@
 				"EndColumn": 40
 			}
 		]
+	},
+	{
+		"Name": "empty_paragraph_end:pgmok1.cob",
+		"Path": "Resources/Mainframe/empty_paragraph_end/pgmok1.cob",
+		"RuleId": 2001002,
+		"Violations": [
+			{
+				"BeginLine": 10,
+				"EndLine": 20,
+				"BeginColumn": 30,
+				"EndColumn": 40
+			}
+		]
+	},
+	{
+		"Name": "paragraph_redefined:pgmok1.cob",
+		"Path": "Resources/Mainframe/paragraph_redefined/pgmok1.cob",
+		"RuleId": 2001002,
+		"Violations": [
+			{
+				"BeginLine": 10,
+				"EndLine": 20,
+				"BeginColumn": 30,
+				"EndColumn": 40
+			}
+		]
 	}
 ]

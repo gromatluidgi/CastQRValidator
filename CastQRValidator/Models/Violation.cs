@@ -13,7 +13,6 @@
         public int BeginLine { get;}
         public int EndLine { get;}
         public int BeginColumn { get;}
-
         public int EndColumn { get;}
     }
 }

@@ -3,9 +3,9 @@
     "Name": "ExtensionSDK",
     "Engine": "CAST",
     "SampleNames": [
-      "binary_depending",
-      "paragraph_redefined",
-      "empty_paragraph_end"
+      "binary_depending:pgmok1.cob",
+      "paragraph_redefined:pgmok1.cob",
+      "empty_paragraph_end:pgmok1.cob"
     ]
   }
 ]

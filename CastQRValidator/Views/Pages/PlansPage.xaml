@@ -24,18 +24,22 @@
             CanUserAddRows="False"
             HeadersVisibility="All"
             IsReadOnly="True"
+            Background="{StaticResource BackgroundLayer2}"
             ItemsSource="{Binding Plans}">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
 
 
-                <DataGridTextColumn Header="Samples" Binding="{Binding Samples}" />
-                
+                <DataGridTextColumn Binding="{Binding Samples}" Header="Samples" />
+
                 <DataGridTemplateColumn Header="Action">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Run" Command="{Binding RunPlanCommand}" IsEnabled="{Binding Path=RunResult, Converter={StaticResource IsNullConverter}, Mode=OneWay}"/>
+                            <Button
+                                Command="{Binding RunPlanCommand}"
+                                Content="Run"
+                                IsEnabled="{Binding Path=RunResult, Converter={StaticResource IsNullConverter}, Mode=OneWay}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

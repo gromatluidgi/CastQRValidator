@@ -1,6 +1,7 @@
 using CastQRValidator.Models;
 using CastQRValidator.Utils;
 using System.Collections.ObjectModel;
+using Xunit;
 
 namespace CastQRValidator.Tests
 {

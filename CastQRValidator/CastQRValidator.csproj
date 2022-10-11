@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-	  <TargetFramework>net6.0-windows</TargetFramework>
+	  <TargetFramework>net5.0-windows</TargetFramework>
 	  <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -53,6 +53,7 @@
     <Folder Include="Events\" />
     <Folder Include="Serialization\" />
     <Folder Include="Options\" />
+    <Folder Include="Views\Dialogs\" />
   </ItemGroup>
 
 </Project>

@@ -11,6 +11,7 @@ namespace CastQRValidator.ViewModels
     [Singleton]
     internal class AppViewModel : ObservableObject
     {
+        private bool _isLoading = false;
 
         private Frame? _pagerFrame;
         private readonly IStoreContext _storeContext;
@@ -28,7 +29,12 @@ namespace CastQRValidator.ViewModels
             set => SetProperty(ref _pagerFrame, value);
         }
 
-        public bool IsLoading { get; set; } = false;
+        public bool IsLoading { get { return _isLoading; } set
+            {
+                _isLoading = value;
+                OnPropertyChanged();
+            }
+        }
         public int RuleCount { get; set; }
         public int PlanCount { get; set; }
         public int EngineCount { get; set; }

@@ -12,6 +12,11 @@ namespace CastQRValidator.Models
 
         public string File { get; set; }
         public List<ResultViolation> Results { get; set; }
+
+        public bool ViolationsMatch(List<Violation> violations)
+        {
+            return true;
+        }
     }
 
     public struct ResultViolation

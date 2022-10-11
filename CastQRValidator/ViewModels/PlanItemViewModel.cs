@@ -16,11 +16,15 @@ namespace CastQRValidator.ViewModels
 {
     public class PlanItemViewModel : ObservableObject
     {
+        private readonly Plan _plan;
+
         public PlanItemViewModel(Plan plan)
         {
+            _plan = plan;
+
             Name = plan.Name;
-            Samples = String.Join(plan.SampleNames, "; ");
-            Engine = engine;
+            Samples = string.Join(";", plan.SampleNames);
+            Engine = plan.Engine;
 
             RunPlanCommand = new AsyncRelayCommand(RunPlanHandler);
         }
@@ -40,10 +44,17 @@ namespace CastQRValidator.ViewModels
 
             try
             {
+                // Fetch engine
                 var engineStore = Bootstraper.ServiceProvider!.GetRequiredService<IEngineStore>();
-                var sampleStore = Bootstraper.ServiceProvider!.GetRequiredService<ISampleStore>();
+                var engine = await engineStore.FindByName(Engine);
+                if (engine == null) throw new InvalidCastException();
 
-                runningPlanPage.DataContext = new RunningPlanViewModel();
+                // Fetch samples
+                var sampleStore = Bootstraper.ServiceProvider!.GetRequiredService<ISampleStore>();
+                var samples = await sampleStore.FindByNames(Samples.Split(';'));
+
+
+                runningPlanPage.DataContext = new RunningPlanViewModel(engine, _plan, samples.ToList());
             }
             catch(Exception e)
             {

@@ -12,6 +12,7 @@
     Height="640"
     MinWidth="1024"
     MinHeight="640"
+    Background="{StaticResource BackgroundLayer1}"
     ResizeMode="NoResize"
     mc:Ignorable="d">
 
@@ -130,11 +131,12 @@
                     BorderBrush="Transparent"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBoxItem HorizontalAlignment="Stretch">
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Height="44" Orientation="Horizontal">
                             <materialDesign:PackIcon
                                 Width="34"
                                 Height="34"
                                 Margin="8,0,0,0"
+                                VerticalAlignment="Center"
                                 Foreground="White"
                                 Kind="MonitorDashboard" />
                             <TextBlock
@@ -151,11 +153,15 @@
                     </ListBoxItem>
 
                     <ListBoxItem HorizontalContentAlignment="Stretch">
-                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                        <StackPanel
+                            Height="44"
+                            HorizontalAlignment="Stretch"
+                            Orientation="Horizontal">
                             <materialDesign:PackIcon
                                 Width="34"
                                 Height="34"
                                 Margin="8,0,0,0"
+                                VerticalAlignment="Center"
                                 Foreground="White"
                                 Kind="Architecture" />
                             <TextBlock
@@ -172,11 +178,15 @@
                     </ListBoxItem>
 
                     <ListBoxItem HorizontalContentAlignment="Stretch">
-                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                        <StackPanel
+                            Height="44"
+                            HorizontalAlignment="Stretch"
+                            Orientation="Horizontal">
                             <materialDesign:PackIcon
                                 Width="34"
                                 Height="34"
                                 Margin="8,0,0,0"
+                                VerticalAlignment="Center"
                                 Foreground="White"
                                 Kind="Security" />
                             <TextBlock
@@ -193,11 +203,15 @@
                     </ListBoxItem>
 
                     <ListBoxItem HorizontalContentAlignment="Stretch">
-                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                        <StackPanel
+                            Height="44"
+                            HorizontalAlignment="Stretch"
+                            Orientation="Horizontal">
                             <materialDesign:PackIcon
                                 Width="34"
                                 Height="34"
                                 Margin="8,0,0,0"
+                                VerticalAlignment="Center"
                                 Foreground="White"
                                 Kind="TestTube" />
                             <TextBlock
@@ -215,11 +229,15 @@
 
                     <ListBoxItem HorizontalContentAlignment="Stretch">
 
-                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                        <StackPanel
+                            Height="44"
+                            HorizontalAlignment="Stretch"
+                            Orientation="Horizontal">
                             <materialDesign:PackIcon
                                 Width="34"
                                 Height="34"
                                 Margin="8,0,0,0"
+                                VerticalAlignment="Center"
                                 Foreground="White"
                                 Kind="Toolbox" />
                             <TextBlock
@@ -235,7 +253,7 @@
                         </i:Interaction.Triggers>
                     </ListBoxItem>
 
-                    <ListBoxItem HorizontalContentAlignment="Stretch">
+                    <!--<ListBoxItem HorizontalContentAlignment="Stretch">
                         <Button
                             Height="44"
                             HorizontalContentAlignment="Stretch"
@@ -280,7 +298,7 @@
                                 <i:InvokeCommandAction Command="{Binding Path=NavigateToCommand}" CommandParameter="Views/Pages/HelpPage.xaml" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-                    </ListBoxItem>
+                    </ListBoxItem>-->
                 </ListBox>
             </StackPanel>
         </Grid>

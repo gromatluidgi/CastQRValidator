@@ -17,6 +17,7 @@
             <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="Performs read, create, update, delete operations over the samples datasource." />
         </StackPanel>
         <DataGrid
+            Background="{StaticResource BackgroundLayer2}"
             Margin="0,16,0,0"
             AutoGenerateColumns="True"
             CanUserAddRows="False"

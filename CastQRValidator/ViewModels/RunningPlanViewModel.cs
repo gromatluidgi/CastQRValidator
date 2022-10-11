@@ -1,57 +1,69 @@
-﻿using CastQRValidator.Attributes;
-using CastQRValidator.Models;
-using CastQRValidator.Utils;
+﻿using CastQRValidator.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 using static CastQRValidator.Utils.ProcessUtil;
 
 namespace CastQRValidator.ViewModels
 {
     internal class RunningPlanViewModel : ObservableObject
     {
+        private Engine _engine;
+        private Plan _plan;
+        private List<Sample> _samples;
+
         public RunningPlanViewModel(
             Engine engine,
             Plan plan, 
             List<Sample> samples)
         {
-            Engine = engine;
-            Plan = plan;
-            Samples = samples;
-            ProcessResults = new ObservableCollection<(SampleItemViewModel, ProcessResult)>();
+            _engine = engine;
+            _plan = plan;
+            _samples = samples;
+            ProcessResults = new ObservableCollection<Tuple<SampleItemViewModel, string>>();
 
             Task.Run(RunPlan);
         }
 
-        public Engine Engine { get; set; }
+        public string PlanName { get => _plan.Name; }
 
-        public Plan Plan { get; set; }
+        public string? ProcessOutput { get; private set; }
 
-        public List<Sample> Samples { get; set; }
-
-        public ObservableCollection<(SampleItemViewModel, ProcessResult)> ProcessResults { get; set; }
-    
+        public ObservableCollection<Tuple<SampleItemViewModel, string>> ProcessResults { get; set; }
     
         private async Task RunPlan()
         {
             var appViewModel = Bootstraper.ServiceProvider!.GetRequiredService<AppViewModel>();
             appViewModel.IsLoading = true;
 
-            foreach (var sample in Samples)
+            try
             {
-                try
+
+                foreach (var sample in _samples)
                 {
-                    var result = await ProcessUtil.ExecuteShellCommand(Engine.Path, ParseArgs(Engine.Arguments));
-                    ProcessResults.Add((new SampleItemViewModel(sample.Name, sample.Path, sample.RuleId), result));
-                } catch (Exception e)
-                {
-                    Debug.Write(e.Message);
+                    try
+                    {
+                        var result = await ExecuteShellCommand(_engine.Path, ParseArgs(_engine.Arguments));
+                        App.Current.Dispatcher.Invoke((Action)delegate //<--- HERE
+                        {
+                            ProcessResults.Add(Tuple.Create(new SampleItemViewModel(sample.Name, sample.Path, sample.RuleId), result.Output));
+                        });
+                        await Task.Delay(2000);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Write(e.Message);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e.Message);
             }
 
             appViewModel.IsLoading = false;
@@ -59,7 +71,7 @@ namespace CastQRValidator.ViewModels
 
         private string ParseArgs(string args)
         {
-            return args;
+            return args.Replace("<SOURCE>", "");
         }
     }
 }

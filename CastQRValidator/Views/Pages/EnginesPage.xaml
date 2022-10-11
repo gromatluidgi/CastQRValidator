@@ -18,6 +18,7 @@
         </StackPanel>
         <DataGrid
             Margin="0,16,0,0"
+            Background="{StaticResource BackgroundLayer2}"
             AutoGenerateColumns="True"
             CanUserAddRows="False"
             HeadersVisibility="All"

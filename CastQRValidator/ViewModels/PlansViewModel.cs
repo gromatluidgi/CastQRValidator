@@ -35,7 +35,7 @@ namespace CastQRValidator.ViewModels
             var plans = await _planService.FindAll();
             foreach (var plan in plans)
             {
-                _plans.Add(new PlanItemViewModel(plan.Name, plan.Engine, string.Join("; ", plan.SampleNames)));
+                _plans.Add(new PlanItemViewModel(plan));
             }
             _isLoading = false;
         }

@@ -25,7 +25,6 @@ namespace CastQRValidator.Views.Pages
         public RunningPlanPage()
         {
             InitializeComponent();
-            this.DataContext = Bootstraper.ServiceProvider!.GetRequiredService<RunningPlanViewModel>();
 
         }
     }
